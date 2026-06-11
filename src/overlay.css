@@ -1,0 +1,100 @@
+/* Transparent overlay — no opaque chrome anywhere. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  user-select: none;
+  cursor: default;
+}
+
+/* Whole panel is draggable. */
+#panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  -webkit-app-region: drag;
+}
+
+/* Slim, near-transparent menu bar (never an opaque titlebar). */
+#menubar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+#title {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+#buttons {
+  display: flex;
+  gap: 6px;
+}
+
+/* Buttons must stay clickable -> opt out of the drag region. */
+.btn {
+  -webkit-app-region: no-drag;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+#close:hover {
+  background: rgba(220, 50, 50, 0.65);
+}
+
+/* Scrolling notepad area. */
+#textarea {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 17px;
+  line-height: 1.45;
+  color: #ffffff;
+  /* Dark stroke so text reads over light and dark backgrounds. */
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.85),
+    1px -1px 0 rgba(0, 0, 0, 0.85),
+    -1px 1px 0 rgba(0, 0, 0, 0.85),
+    1px 1px 0 rgba(0, 0, 0, 0.85),
+    0 2px 4px rgba(0, 0, 0, 0.7);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Thin, unobtrusive scrollbar. */
+#textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+#textarea::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+}

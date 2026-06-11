@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self';" />
+    <title>PeekBoard</title>
+    <link rel="stylesheet" href="overlay.css" />
+  </head>
+  <body>
+    <div id="panel">
+      <div id="menubar">
+        <span id="title">peekboard</span>
+        <div id="buttons">
+          <button id="clear" class="btn" title="Clear">Clear</button>
+          <button id="hide" class="btn" title="Hide">Hide</button>
+          <button id="close" class="btn" title="Close">Close</button>
+        </div>
+      </div>
+      <div id="textarea"></div>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>
