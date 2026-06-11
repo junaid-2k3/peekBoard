@@ -67,6 +67,14 @@ chmod +x PeekBoard-<version>.AppImage
 ./PeekBoard-<version>.AppImage
 ```
 
+**Arch Linux:** AppImages need FUSE 2. Either install it, or run extracted:
+
+```bash
+sudo pacman -S fuse2          # then run normally
+# --- or skip FUSE entirely ---
+./PeekBoard-<version>.AppImage --appimage-extract-and-run
+```
+
 > Reminder: on Linux the overlay is **not** hidden from screen-share, and global
 > keystroke capture is limited under Wayland (see *Platform caveats*).
 
