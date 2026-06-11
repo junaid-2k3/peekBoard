@@ -48,6 +48,30 @@ renderer never touches Node directly.
 
 ---
 
+## Download (prebuilt binaries)
+
+Grab the latest build from the
+[**Releases page**](https://github.com/junaid-2k3/peekBoard/releases/latest).
+
+### Windows
+
+1. Download `PeekBoard-Setup-<version>.exe`.
+2. Run it. The build is **unsigned**, so Windows SmartScreen shows
+   *"Windows protected your PC / unknown publisher"* — click **More info →
+   Run anyway**. (This is expected for a free, self-published tool.)
+
+### Linux (AppImage)
+
+```bash
+chmod +x PeekBoard-<version>.AppImage
+./PeekBoard-<version>.AppImage
+```
+
+> Reminder: on Linux the overlay is **not** hidden from screen-share, and global
+> keystroke capture is limited under Wayland (see *Platform caveats*).
+
+---
+
 ## Requirements
 
 - [Node.js](https://nodejs.org/) 18+ and npm.
@@ -114,6 +138,10 @@ Artifacts are written to `dist/`.
 - **Global key capture needs the native hook.** On Linux you may need to run
   with appropriate input-device permissions (e.g. membership in the `input`
   group) for `uiohook-napi` to read events.
+- **Wayland limits global capture.** `uiohook-napi` reads keys via the X11
+  `XRecord` API. Under a Wayland session (e.g. Hyprland), global grab is blocked
+  by design — keystrokes from native Wayland apps are not captured; only
+  XWayland clients may be seen. Use an X11 session for reliable Linux capture.
 
 ---
 
